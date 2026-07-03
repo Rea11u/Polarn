@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Title-->
+    <title>Polarn</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+    <link rel="manifest" href="favicon/site.webmanifest">
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles/lesson1.css">
+    <link rel="stylesheet" href="styles/adaptive.css">
+    <link rel="stylesheet" href="styles/mobile.css">
+</head>
+<body>
+
+<!-- Preloader -->
+<div class="preloader">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="preloader__image" role="img">
+        <path class="colorPre" d="M21 15.5018C18.651 14.5223 17 12.2039 17 9.5C17 6.79774 18.6534 4.48062 21 3.5C20.2304 3.17906 19.3859 3 18.5 3C15.7977 3 13.4806 4.64899 12.5 6.9956M6.9 21C4.74609 21 3 19.2889 3 17.1781C3 15.4286 4.3 13.8125 6.25 13.5C6.86168 12.0617 8.30934 11 9.9978 11C12.1607 11 13.9285 12.6589 14.05 14.75C15.1978 15.2463 16 16.4645 16 17.7835C16 19.5599 14.5449 21 12.75 21L6.9 21Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+</div>
+
+<!-- Navigation -->
+<div class="navbar">
+    <div class="Nbar">
+        <h2 class="Ntitle">Polarn</h2>
+        <div class="Mbtn">
+            <button class="Nbtn" id="btn-video" onclick="showSlide(0)">🎬</button>
+            <button class="Nbtn" id="btn-task" onclick="showSlide(1)">✏️</button>
+        </div>
+    </div>
+    <div class="Theme">
+        <button id="theme-toggle" class="Ntheme">
+            <svg width="38px" height="38px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M13 6V3M18.5 12V7M14.5 4.5H11.5M21 9.5H16M15.5548 16.8151C16.7829 16.8151 17.9493 16.5506 19 16.0754C17.6867 18.9794 14.7642 21 11.3698 21C6.74731 21 3 17.2527 3 12.6302C3 9.23576 5.02061 6.31331 7.92462 5C7.44944 6.05072 7.18492 7.21708 7.18492 8.44523C7.18492 13.0678 10.9322 16.8151 15.5548 16.8151Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </button>
+    </div>
+</div>
+
+<!-- Main -->
+<div class="Main">
+    <div id="slide0" class="contentSection activeSlide">
+        <h1 class="Title">Введение в информационную безопасность</h1>
+        <video class="VideoPlayer" controls ontimeupdate="checkVideoTime(this)">
+            <source src="lesson1.mp4" type="video/mp4">
+            Ваш браузер не поддерживает видео тег.
+        </video>
+    </div>
+    <div id="slide1" class="contentSection">
+        <h1 class="Title">Задания:</h1>
+        <p class="Tasks">Для себя</p>
+        <ul class="TaskList">
+            <li>Задание 1: Установка и настройка виртуальной лаборатории (VirtualBox, Kali Linux)</li>
+            <li>Задание 2: Шифрование и дешифрование сообщений с помощью OpenSSL</li>
+            <li>Задание 3: Создание и проверка хешей</li>
+        </ul>
+    </div>
+    <button class="prev" onclick="prevSlide()">&#10094;</button>
+    <button class="next" onclick="nextSlide()">&#10095;</button>
+</div>
+
+<!-- Footer -->
+<footer class="footer">
+    <h2 class="ftitle">Polarn</h2>
+    <p class="fdescription">Данный веб-сайт не хранит файлы на своем сервере. Он предоставляет ссылки
+        <br>
+        только на медиаконтент, размещенный на сторонних ресурсах.</p>
+    <div class="border"></div>
+</footer>
+
+<!-- Scripts-->
+<script src="js/main.js"></script>
+<script src="js/preloader.js"></script>
+<script src="js/theme.js"></script>
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Title-->
+    <title>Polarn</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+    <link rel="manifest" href="favicon/site.webmanifest">
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles/code.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Шифратор (свой)</h1>
+        <label for="inputMessage" class="sms">Введите сообщение:</label>
+        <textarea id="inputMessage" rows="4"></textarea>
+        <button onclick="encryptMessage()">Зашифровать</button>
+        <label for="outputMessage" class="message">Зашифрованное сообщение:</label>
+        <textarea id="outputMessage" rows="4" readonly></textarea>
+        <button onclick="decryptMessage()">Расшифровать</button>
+        <label for="decryptedMessage" class="message">Расшифрованное сообщение:</label>
+        <textarea id="decryptedMessage" rows="4" readonly></textarea>
+    </div>
+
+<script>
+// script.js
+
+// Фиксированная таблица замены для русского и английского алфавитов и цифр
+const substitutionTable = {
+    'А': '!#%', 'Б': '@&*', 'В': '^$@', 'Г': '*2^', 'Д': '&*4', 'Е': '#!&',
+    'Ё': '!*#', 'Ж': '*@%', 'З': '#@2', 'И': '$&^', 'Й': '^&@', 'К': '@^*',
+    'Л': '*#!', 'М': '%&*', 'Н': '*@^', 'О': '^#*', 'П': '&*1', 'Р': '!%^',
+    'С': '*&#', 'Т': '6@!', 'У': '9*$', 'Ф': '*&7', 'Х': '$*@', 'Ц': '*^%',
+    'Ч': '@*!', 'Ш': '#&*', 'Щ': '*^@', 'Ъ': '&!#', 'Ы': '*$!', 'Ь': '@^#',
+    'Э': '#*&', 'Ю': '^*@', 'Я': '&#!',
+    'а': '12%', 'б': '34*', 'в': '56@', 'г': '78^', 'д': '90&', 'е': '01!',
+    'ё': '!0*', 'ж': '*9@', 'з': '#89', 'и': '$7^', 'й': '^6@', 'к': '7*^',
+    'л': '*6!', 'м': '%5*', 'н': '*4^', 'о': '^3*', 'п': '0*&', 'р': '!2%',
+    'с': '*1&', 'т': '#0!', 'у': '!9$', 'ф': '*8@', 'х': '$7*', 'ц': '*6%',
+    'ч': '3*@', 'ш': '#4&', 'щ': '*5@', 'ъ': '&!6', 'ы': '*7!', 'ь': '@^8',
+    'э': '#*9', 'ю': '^*0', 'я': '&!1',
+    'A': 'z@!', 'B': '*&^', 'C': '#*$', 'D': '!%&', 'E': '*!@', 'F': '^%$',
+    'G': '&*@', 'H': '!*&', 'I': '#@^', 'J': '*!%', 'K': '^&*', 'L': '@#!',
+    'M': '*&^', 'N': '!*$', 'O': '#@!', 'P': '18@', 'Q': '^!%', 'R': '@*&',
+    'S': '*!#', 'T': '^$*', 'U': '@%!', 'V': '&^*', 'W': '!*$', 'X': '#@!',
+    'Y': '*&@', 'Z': '^%$',
+    'a': '1@#', 'b': '*2%', 'c': '#3*', 'd': '!4^', 'e': '5@*', 'f': '^6!',
+    'g': '*7%', 'h': '#8*', 'i': '!9@', 'j': '0^%', 'k': '*1@', 'l': '^2*',
+    'm': '#3!', 'n': '*4%', 'o': '!5^', 'p': '6@*', 'q': '^7!', 'r': '*8%',
+    's': '#9*', 't': '!0^', 'u': '1@*', 'v': '^2!', 'w': '*3%', 'x': '#4*',
+    'y': '!5@', 'z': '6^%'
+};
+
+// Функция для шифрования сообщения
+function encryptMessage() {
+    const inputMessage = document.getElementById('inputMessage').value;
+    let encryptedMessage = "";
+
+    for (let i = 0; i < inputMessage.length; i++) {
+        const char = inputMessage[i];
+        if (substitutionTable.hasOwnProperty(char)) {
+            encryptedMessage += substitutionTable[char];
+        } else {
+            encryptedMessage += char;
+        }
+    }
+
+    document.getElementById('outputMessage').value = encryptedMessage;
+}
+
+// Функция для дешифрования сообщения
+function decryptMessage() {
+    const encryptedMessage = document.getElementById('outputMessage').value;
+    let decryptedMessage = "";
+
+    // Создаем обратную таблицу замены для дешифрования
+    const reverseSubstitutionTable = {};
+    for (let key in substitutionTable) {
+        if (substitutionTable.hasOwnProperty(key)) {
+            reverseSubstitutionTable[substitutionTable[key]] = key;
+        }
+    }
+
+    // Декодируем зашифрованное сообщение
+    let i = 0;
+    while (i < encryptedMessage.length) {
+        let found = false;
+        // Пробуем декодировать символ из трёх символов
+        for (let step = 3; step >= 2; step--) {
+            const triplet = encryptedMessage.substr(i, step);
+            if (reverseSubstitutionTable.hasOwnProperty(triplet)) {
+                decryptedMessage += reverseSubstitutionTable[triplet];
+                i += step;
+                found = true;
+                break;
+            }
+        }
+        // Если не найдено соответствие, добавляем как есть
+        if (!found) {
+            decryptedMessage += encryptedMessage[i];
+            i++;
+        }
+    }
+
+    document.getElementById('decryptedMessage').value = decryptedMessage;
+}
+
+    </script>
+</body>
+</html>

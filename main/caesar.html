@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Title -->
+    <title>Polarn</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+    <link rel="manifest" href="favicon/site.webmanifest">
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles/caesar.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Игра Цезаря</h1>
+        <p>Зашифрованное сообщение:</p>
+        <p id="encryptedMessage"></p>
+        <input type="number" id="shift" placeholder="Введите сдвиг">
+        <button onclick="decryptMessage()">Расшифровать</button>
+        <p>Ваше сообщение:</p>
+        <p id="decryptedMessage"></p>
+    </div>
+
+<script>
+// Зашифрованное сообщение
+const encryptedMessage = "dtz fwj ymj gjxy";
+document.getElementById('encryptedMessage').innerText = encryptedMessage;
+
+function decryptMessage() {
+    const shift = parseInt(document.getElementById('shift').value);
+    if (isNaN(shift)) {
+        console.log('Пожалуйста, введите действительное число для сдвига.');
+        return;
+    }
+
+    let decryptedMessage = '';
+    for (let i = 0; i < encryptedMessage.length; i++) {
+        const char = encryptedMessage[i];
+        if (char.match(/[a-z]/i)) {
+            const code = encryptedMessage.charCodeAt(i);
+            let shiftedCode = code;
+
+            // Для заглавных букв
+            if (code >= 65 && code <= 90) {
+                shiftedCode = ((code - 65 - shift + 26) % 26) + 65;
+            }
+            // Для строчных букв
+            else if (code >= 97 && code <= 122) {
+                shiftedCode = ((code - 97 - shift + 26) % 26) + 97;
+            }
+            decryptedMessage += String.fromCharCode(shiftedCode);
+        } else {
+            decryptedMessage += char;
+        }
+    }
+
+    document.getElementById('decryptedMessage').innerText = decryptedMessage;
+}
+    </script>
+</body>
+</html>

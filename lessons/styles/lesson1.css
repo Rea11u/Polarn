@@ -1,0 +1,240 @@
+/* Main CSS */
+body {
+    font-family: 'Manrope', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+/* Navbar */
+.navbar {
+    padding-left: 5rem;
+    padding-right: 5rem;
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.Nbar {
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.Ntitle {
+    font-size: 30px;
+    margin-right: 30px;
+}
+
+.Mbtn {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    margin-left: 5px;
+}
+
+.Nbtn {
+    background-color: #0077ff;
+    border-radius: 10px;
+    font-size: 20px;
+    padding: 1px 5px;
+    height: 40px;
+    width: 40px;
+    color: #e0e0e0;
+    margin-left: 5px;
+    transition: 0.3s;
+}
+
+.Nbtn.viewed {
+    background-color: #00b92b !important;
+    transition: 0.3s;
+}
+
+/* Theme button */
+.Theme {
+    display: flex;
+    flex-wrap: nowrap;
+    position: absolute;
+    right: 60px;
+    top: 20px;
+}
+
+.Ntheme {
+    color: black;
+    width: 50px;
+    height: 50px;
+    background-color: #e0e0e0;
+    border-radius: 10px;
+}
+
+/* Main */
+.Main {
+    padding: 20px;
+    text-align: center;
+    position: relative;
+}
+
+.Title {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.VideoPlayer {
+    width: 80%;
+    max-width: 800px;
+    height: auto;
+    margin-bottom: 20px;
+    border-radius: 20px;
+    box-shadow: 5px 5px black;
+}
+
+.Tasks {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.TaskList {
+    list-style: none;
+    padding: 0;
+}
+
+.TaskList li {
+    font-size: 18px;
+    margin: 5px 0;
+}
+
+.contentSection {
+    display: none;
+}
+
+.activeSlide {
+    display: block;
+}
+
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 12px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    background-color: rgba(0, 0, 0, 0.205); /* Background color */
+}
+
+.prev {
+    left: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.prev:hover, .next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Slides body color */
+body.slide-0 {
+    background-color: var(--background-color);
+}
+
+body.slide-1 {
+    background-color: var(--background-color);
+}
+
+/* Change Theme */
+:root {
+    --background-color: #222222;
+    --color: #ffffff;
+    transition: 0.3s;
+}
+
+body.dark-theme {
+    --background-color: #f5f5f5;
+    --color: #000000;
+    transition: 0.3s;
+}
+
+body {
+    background-color: var(--background-color);
+    color: var(--color);
+    transition: 0.3s;
+    margin: 0 !important;
+    overflow: hidden;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    cursor: url('https://r2.guns.lol/5e1f2bdb-3a89-4ea8-b05c-0bd5aec1bcfc.cur'), auto !important;
+    font-family: "Manrope", sans-serif;
+}
+   
+a {
+    color: var(--color);
+    transition: 0.3s;
+    text-decoration: none;
+}
+
+path {
+    fill: var(--color);
+}
+
+/* Footer */
+.footer {
+    margin-top: 6rem;
+    margin-left: 5rem;
+}
+
+.ftitle {
+    margin: 0;
+}
+
+.fdescription {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 15px;
+}
+
+.border {
+    width: 115px;
+    height: 2px;
+    background: var(--color);
+    transition: 0.3s;
+}
+
+/* Preloader */
+.preloader {
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+    background: var(--background-color);
+    z-index: 100;
+}
+
+.preloader__image {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    width: 70px;
+    height: 70px;
+    margin-top: -35px;
+    margin-left: -35px;
+    text-align: center;
+}
+
+.loaded_hiding .preloader {
+    transition: 0.3s opacity;
+    opacity: 0;
+}
+
+.loaded .preloader {
+    display: none;
+}

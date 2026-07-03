@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stealer</title>
+</head>
+<body>
+    <h1>cookies</h1>
+    <ul id="cookies"></ul>
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const cookie = urlParams.get('cookie');
+
+        if (cookie) {
+            const cookiesList = document.getElementById('cookies');
+            const listItem = document.createElement('li');
+            listItem.textContent = cookie;
+            cookiesList.appendChild(listItem)
+        } 
+    </script>
+</body>
+</html>

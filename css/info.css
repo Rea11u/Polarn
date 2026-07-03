@@ -1,0 +1,250 @@
+/* Base */
+* {box-sizing: border-box}
+.mySlides {display: none;}
+img {vertical-align: middle; border-radius: 20px; box-shadow: 10px 10px var(--box-shadow-color); height: 300px;}
+
+/* Container */
+.container {
+    max-width: 1750px;
+    position: relative;
+    margin: auto;
+    margin-top: 10rem;
+}
+
+.text {
+    font-size: 18px;
+    font-weight: 500;
+    position: relative;
+    width: 100%;
+    margin-left: 50px;
+    width: 750px;
+    margin-top: 10px;
+}
+
+.textM {
+    font-size: 20px;
+    margin-left: 40px;
+    position: relative;
+    font-weight: 600;
+    margin-top: 10px;
+    display: none;
+}
+
+.Stitle {
+    font-size: 40px;
+    margin-left: 50px;
+    position: relative;
+    font-weight: 600;
+}
+
+.time {
+    font-size: 20px;
+    margin-left: 50px;
+    position: relative;
+    font-weight: 600;
+}
+
+/* Navbar */
+.navbar {
+    padding-left: 5rem;
+    padding-right: 5rem;
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.Nbar {
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.Ntitle {
+    font-size: 30px;
+    margin-right: 30px;
+}
+
+.Nb {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    margin-left: 5px;
+}
+
+.Nbtn {
+    font-size: 20px;
+    margin: .3em;
+}
+
+/* Theme button */
+.Theme {
+    display: flex;
+    flex-wrap: nowrap;
+    margin-left: 20px;
+    position: absolute;
+    right: 80px;
+    top: 20px;
+}
+
+.Ntheme {
+    margin-bottom: 30px;
+    color: black;
+    width: 50px;
+    height: 50px;
+    background-color: #e0e0e0;
+    border-radius: 10px;
+}
+
+/* Games */
+.games {
+    display: flex;
+    margin-left: 180px;
+    margin-top: 40px;
+}
+
+.game {
+    width: 200px;
+    padding: 12px 16px;
+    height: 150px;
+    background-color: var(--background-color);
+    border: 1px solid var(--color);
+    box-shadow: 5px 5px var(--color);
+    border-radius: 10px;
+    margin: 1em;
+}
+
+.gamename {
+    font-size: 20px;
+    font-weight: 600;
+    text-decoration: underline;
+    margin-bottom: 3px;
+}
+
+.minutes {
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 3px;
+}
+
+.info {
+    font-size: 15px;
+    font-weight: 500;
+}
+
+/* Footer */
+.footer {
+    margin-top: 10rem;
+    margin-left: 5rem;
+}
+
+.ftitle {
+    margin: 0;
+}
+
+.fdescription {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 15px;
+}
+
+.border {
+    width: 115px;
+    height: 2px;
+    background: var(--color);
+}
+
+/* Change Theme */
+:root {
+    --background-color: #222222;
+    --color: #ffffff;
+    transition: 0.3s;
+}
+
+body.dark-theme {
+    --background-color: #f5f5f5;
+    --color: #000000;
+    transition: 0.3s;
+}
+
+path {fill: var(--color);}
+
+body {
+    background-color: var(--background-color);
+    color: var(--color);
+    transition: 0.3s;
+    font-family: "Manrope", sans-serif;
+    margin: 0;
+    cursor: url('https://r2.guns.lol/5e1f2bdb-3a89-4ea8-b05c-0bd5aec1bcfc.cur'), auto !important;
+    overflow: hidden;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+ 
+a {
+    color: var(--color);
+    transition: 0.3s;
+    text-decoration: none;
+}
+
+/* Preloader */
+.preloader {
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+    background: var(--background-color);
+    z-index: 100;
+}
+
+.preloader__image {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    width: 70px;
+    height: 70px;
+    margin-top: -35px;
+    margin-left: -35px;
+    text-align: center;
+}
+
+.loaded_hiding .preloader {
+    transition: 0.3s opacity;
+    opacity: 0;
+}
+
+.loaded .preloader {
+    display: none;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    right: 200px;
+    margin-top: 200px;
+}
+
+.download {
+    display: flex;
+    flex-direction: column;
+}
+
+.sites {
+    display: flex;
+    flex-direction: column;
+}
+
+.sitesM {
+    display: flex;
+    flex-direction: column;
+    display: none;
+    margin-left: 40px;
+}
+
+.sitesM h1 {
+    margin-top: 70px;
+    margin-bottom: 10px;
+}
+
+.sitesM a {
+    margin: 0.3em;
+}

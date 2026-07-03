@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Title -->
+    <title>Polarn</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+    <link rel="manifest" href="favicon/site.webmanifest">
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles/caesar.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Игра Виженера</h1>
+        <p>Зашифрованное сообщение:</p>
+        <p id="encryptedMessage"></p>
+        <input type="text" id="key" placeholder="Введите ключ">
+        <button onclick="decryptMessage()">Расшифровать</button>
+        <p>Ваше сообщение:</p>
+        <p id="decryptedMessage"></p>
+    </div>
+
+<script>
+// Зашифрованное сообщение
+const encryptedMessage = "zinff ehpdh";
+document.getElementById('encryptedMessage').innerText = encryptedMessage;
+
+// Алфавит для шифра
+const alphabet = "abcdefghijklmnopqrstuvwxyz";
+
+// Функция для расшифровки
+function decryptMessage() {
+    const key = document.getElementById('key').value.toLowerCase();
+    if (!key) {
+        alert('Пожалуйста, введите ключ.');
+        return;
+    }
+
+    let decryptedMessage = '';
+    let keyIndex = 0;
+
+    for (let i = 0; i < encryptedMessage.length; i++) {
+        const char = encryptedMessage[i];
+        if (char.match(/[a-z]/i)) {
+            const charCode = alphabet.indexOf(char.toLowerCase());
+            const keyCode = alphabet.indexOf(key[keyIndex % key.length]);
+            let decryptedCharCode = (charCode - keyCode + alphabet.length) % alphabet.length;
+
+            if (char === char.toUpperCase()) {
+                decryptedMessage += alphabet[decryptedCharCode].toUpperCase();
+            } else {
+                decryptedMessage += alphabet[decryptedCharCode];
+            }
+            keyIndex++;
+        } else {
+            decryptedMessage += char;
+        }
+    }
+
+    document.getElementById('decryptedMessage').innerText = decryptedMessage;
+}
+</script>
+</body>
+</html>

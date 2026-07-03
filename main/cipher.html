@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Title -->
+    <title>Polarn</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+    <link rel="manifest" href="favicon/site.webmanifest">
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles/caesar.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Игра по расшифровке</h1>
+        <p>Зашифрованное сообщение:</p>
+        <p id="encryptedMessage"></p>
+        <input type="text" id="userInput" placeholder="Введите расшифрованное слово">
+        <button onclick="checkDecryption()">Проверить</button>
+        <p id="resultMessage"></p>
+    </div>
+
+<script>
+// Фиксированная таблица замены для русского и английского алфавитов и цифр
+const substitutionTable = {
+    'А': '!#%', 'Б': '@&*', 'В': '^$@', 'Г': '*2^', 'Д': '&*4', 'Е': '#!&',
+    'Ё': '!*#', 'Ж': '*@%', 'З': '#@2', 'И': '$&^', 'Й': '^&@', 'К': '@^*',
+    'Л': '*#!', 'М': '%&*', 'Н': '*@^', 'О': '^#*', 'П': '&*1', 'Р': '!%^',
+    'С': '*&#', 'Т': '6@!', 'У': '9*$', 'Ф': '*&7', 'Х': '$*@', 'Ц': '*^%',
+    'Ч': '@*!', 'Ш': '#&*', 'Щ': '*^@', 'Ъ': '&!#', 'Ы': '*$!', 'Ь': '@^#',
+    'Э': '#*&', 'Ю': '^*@', 'Я': '&#!',
+    'а': '12%', 'б': '34*', 'в': '56@', 'г': '78^', 'д': '90&', 'е': '01!',
+    'ё': '!0*', 'ж': '*9@', 'з': '#89', 'и': '$7^', 'й': '^6@', 'к': '7*^',
+    'л': '*6!', 'м': '%5*', 'н': '*4^', 'о': '^3*', 'п': '0*&', 'р': '!2%',
+    'с': '*1&', 'т': '#0!', 'у': '!9$', 'ф': '*8@', 'х': '$7*', 'ц': '*6%',
+    'ч': '3*@', 'ш': '#4&', 'щ': '*5@', 'ъ': '&!6', 'ы': '*7!', 'ь': '@^8',
+    'э': '#*9', 'ю': '^*0', 'я': '&!1',
+    'A': 'z@!', 'B': '*&^', 'C': '#*$', 'D': '!%&', 'E': '*!@', 'F': '^%$',
+    'G': '&*@', 'H': '!*&', 'I': '#@^', 'J': '*!%', 'K': '^&*', 'L': '@#!',
+    'M': '*&^', 'N': '!*$', 'O': '#@!', 'P': '*8@', 'Q': '^!%', 'R': '@*&',
+    'S': '*!#', 'T': '^$*', 'U': '@%!', 'V': '&^*', 'W': '!*$', 'X': '#@!',
+    'Y': '*&@', 'Z': '^%$',
+    'a': '1@#', 'b': '*2%', 'c': '#3*', 'd': '!4^', 'e': '5@*', 'f': '^6!',
+    'g': '*7%', 'h': '#8*', 'i': '!9@', 'j': '0^%', 'k': '*1@', 'l': '^2*',
+    'm': '#3!', 'n': '*4%', 'o': '!5^', 'p': '6@*', 'q': '^7!', 'r': '*8%',
+    's': '#9*', 't': '!0^', 'u': '1@*', 'v': '^2!', 'w': '*3%', 'x': '#4*',
+    'y': '!5@', 'z': '6^%'
+};
+
+// Пример зашифрованного сообщения
+const encryptedMessage = '$7^*4^*8@^3*!2%%5*12%*6%$7^^3**4^*4^12%&!1 #9*5@*#3*1@**8%!9@!0^!5@';
+const correctDecryption = 'информационная security';
+
+document.getElementById('encryptedMessage').innerText = encryptedMessage;
+
+function checkDecryption() {
+    const userInput = document.getElementById('userInput').value;
+
+    if (userInput === correctDecryption) {
+        document.getElementById('resultMessage').innerText = 'Правильно!';
+    } else {
+        document.getElementById('resultMessage').innerText = 'Неправильно, попробуйте еще раз.';
+    }
+}
+</script>
+</body>
+</html>
